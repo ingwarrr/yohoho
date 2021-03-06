@@ -1,0 +1,66 @@
+html {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+#main_frame {
+    width: 100vw;
+    height: 100vh;
+}
+
+body, a, div, span, input {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+@mixin tr {
+    transition: all ease .2s;
+}
+
+.menu {
+    @include tr;
+    width: 100%;
+    padding-bottom: 40px;
+    position: fixed;
+    top: -20px;
+    left: 0;
+    background: rgba(0,0,0,.4);
+    &.active {
+        top: 0;
+    }
+    &-show {
+        position: absolute;
+        bottom: 0;
+    }
+    &-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.preview {
+    margin: 0 16px 16px 16px;
+    /* max-width: 181px; */
+    width: 20%;
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 4px;
+    background: #fff;
+    &-title {
+        color: #373737;
+        text-decoration: none;
+        margin-bottom: 4px;
+    }
+}
+
+.btn {
+    margin: 0 16px;
+    padding: 8px 32px;
+    border: 1px solid red;
+}
