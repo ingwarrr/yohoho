@@ -28,11 +28,17 @@ a {
     width: 100%;
     padding-bottom: 40px;
     position: fixed;
-    top: -20px;
+    top: calc(-100% + 34px);
+    height: 100%;
     left: 0;
     background: rgba(0,0,0,.4);
+    padding: 1rem;
     &.active {
         top: 0;
+        & .menu-show {
+            top: 1rem;
+            bottom: unset;
+        }
     }
     &-show {
         position: absolute;
@@ -41,11 +47,19 @@ a {
     &-list {
         display: flex;
         flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+    &-input {
+        padding: .5rem;
+        border-radius: 4px;
+        margin: 0 auto;
+        min-width: 400px;
+        display: block;
     }
 }
 
 .preview {
-    margin: 0 16px 16px 16px;
+    margin: 0 1rem 1rem 0;
     /* max-width: 181px; */
     width: 20%;
     padding: 8px;
@@ -60,7 +74,7 @@ a {
 }
 
 .btn {
-    margin: 0 16px;
     padding: 8px 32px;
-    border: 1px solid red;
+    border: 1px solid #909090;
+    border-radius: 4px;
 }

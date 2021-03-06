@@ -195,8 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   menuShow.addEventListener('click', () => store.dispatch(actions.showPanel()));
   mainList.addEventListener('click', (e) => {
+    let url;
     e.preventDefault();
-    store.dispatch(actions.targetUrl(e.target.parentNode.href));
+    url = e.target.href ? e.target.href : e.target.parentNode.href;
+    store.dispatch(actions.targetUrl(url));
   });
 
   mainList.addEventListener('keydown', (e) => {
