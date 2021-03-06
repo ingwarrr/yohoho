@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ./frontend
 yarn -i
-cd ./backend
+cd ../backend
 pip install -r requirements.txt

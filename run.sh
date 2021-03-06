@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ./frontend
 yarn run webpack
-cd ./backend
+cd ../backend
 python ./app.py
