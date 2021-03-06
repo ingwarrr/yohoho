@@ -66,10 +66,17 @@ a {
     border: 1px solid;
     border-radius: 4px;
     background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
     &-title {
         color: #373737;
         text-decoration: none;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
+        font-size: 20px;
+    }
+    &-year {
+        margin-top: auto;
     }
 }
 
