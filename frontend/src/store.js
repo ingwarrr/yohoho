@@ -1,6 +1,6 @@
 function getSearchResults(q) {
   console.log('fetch');
-  fetch('http://0.0.0.0:5000/q', {
+  fetch('http://localhost:5000/q', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
