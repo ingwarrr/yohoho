@@ -139,7 +139,7 @@ function compareTypes(a,b) {
 
 function getSearchResults(q) {
   console.log('fetch');
-  fetch('http://127.0.0.1:5000/q', {
+  fetch('http://0.0.0.0:5000/q', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
