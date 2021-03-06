@@ -100,9 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 600);
 
   menuInput.addEventListener('input', debouncedDispatch);
-  if (/(PlayStation)/gm.test(a)) {
-    ps.innerText = 'This is playstation'
-  }
+    ps.innerText = navigator.userAgent
 
 });
 
