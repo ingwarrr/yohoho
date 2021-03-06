@@ -51,6 +51,11 @@ const toggleMenu = () => {
 const renderSearchResults = () => {
   const state = store.getState();
   const prevState = store.getPrevState();
+  ps.innerText = `
+  <pre>
+    ${JSON.stringify(state.searchResults)}
+  </pre>
+  `;
   if (state.searchResults && state.searchResults.length > 0) {
     const list = state.searchResults
       .sort(compareTypes)
@@ -96,7 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const debouncedDispatch = debounce((e) => {
-    store.dispatch(actions.searchQuery(e.target.value));
+    const val = e.target.value;
+    ps.innerText = val;
+    store.dispatch(actions.searchQuery(val));
   }, 600);
 
   menuInput.addEventListener('input', debouncedDispatch);
