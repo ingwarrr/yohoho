@@ -1,0 +1,87 @@
+html {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+#main_frame {
+    width: 100vw;
+    height: 100vh;
+}
+
+body, a, div, span, input {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+@mixin tr {
+    transition: all ease .2s;
+}
+
+.menu {
+    @include tr;
+    width: 100%;
+    padding-bottom: 40px;
+    position: fixed;
+    top: calc(-100% + 34px);
+    height: 100%;
+    left: 0;
+    background: rgba(0,0,0,.4);
+    padding: 1rem;
+    &.active {
+        top: 0;
+        & .menu-show {
+            top: 1rem;
+            bottom: unset;
+        }
+    }
+    &-show {
+        position: absolute;
+        bottom: 0;
+    }
+    &-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+    &-input {
+        padding: .5rem;
+        border-radius: 4px;
+        margin: 0 auto;
+        min-width: 400px;
+        display: block;
+    }
+}
+
+.preview {
+    margin: 0 1rem 1rem 0;
+    /* max-width: 181px; */
+    width: 20%;
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 4px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    &-title {
+        color: #373737;
+        text-decoration: none;
+        margin-bottom: 8px;
+        font-size: 20px;
+    }
+    &-year {
+        margin-top: auto;
+    }
+}
+
+.btn {
+    padding: 8px 32px;
+    border: 1px solid #909090;
+    border-radius: 4px;
+}
