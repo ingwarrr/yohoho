@@ -32,7 +32,8 @@ const menu = document.querySelector('.menu'),
   menuShow = document.querySelector('.menu-show'),
   menuInput = document.querySelector('.menu-input'),
   mainFrame = document.querySelector('#main_frame'),
-  mainList = document.querySelector('.menu-list');
+  mainList = document.querySelector('.menu-list'),
+  ps = document.querySelector('.ps');
 
 window.mainFrame = mainFrame;
 
@@ -99,6 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 600);
 
   menuInput.addEventListener('input', debouncedDispatch);
+  if (/(PlayStation)/gm.test(a)) {
+    ps.innerText = 'This is playstation'
+  }
 
 });
 
