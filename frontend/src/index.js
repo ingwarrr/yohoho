@@ -1,7 +1,8 @@
 import './index.scss';
 import debounce from 'lodash.debounce';
 import store, { actions } from './store';
-import { toggleMenu, setIframeUrl, renderSearchResults} from './actions'
+import { isPs } from './utils';
+import { toggleMenu, setIframeUrl, renderSearchResults } from './actions'
 import {
   menu,
   menuShow,

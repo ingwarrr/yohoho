@@ -1,4 +1,5 @@
-const API_URL = 'http://0.0.0.0:5000/q';
+import { API_URL } from './app.config'
+console.log(API_URL);
 function getSearchResults(q) {
   console.log('fetch');
   fetch(API_URL, {

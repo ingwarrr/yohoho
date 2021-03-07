@@ -18,7 +18,7 @@ CORS(app, support_credentials=True)
 def ping_pong():
     return jsonify('pong!')
 
-@app.route('/q', methods=['POST'])
+@app.route('/q/', methods=['POST', 'GET'])
 def get_search():
     # post_data = request.get_json()
     q = request.get_json()

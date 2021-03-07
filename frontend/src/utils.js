@@ -19,3 +19,4 @@ export const compareTypes = (a, b) =>  {
     return 0
   }
 };
+export const isPs = () => /(PlayStation)/gm.test('PlayStation');
