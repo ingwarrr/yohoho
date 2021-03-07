@@ -4,7 +4,8 @@ const menu = document.querySelector('.menu'),
   mainFrame = document.querySelector('#main_frame'),
   mainList = document.querySelector('.menu-list'),
   form = document.querySelector('form'),
-  ps = document.querySelector('.ps');
+  ps = document.querySelector('.ps'),
+  mainError = document.querySelector('.main-error');
 
 export {
   menu,
@@ -14,4 +15,5 @@ export {
   mainList,
   form,
   ps,
+  mainError,
 }

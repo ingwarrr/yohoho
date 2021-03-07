@@ -2,7 +2,7 @@ import './index.scss';
 import debounce from 'lodash.debounce';
 import store, { actions } from './store';
 import { isPs } from './utils';
-import { toggleMenu, setIframeUrl, renderSearchResults } from './actions'
+import { toggleMenu, setIframeUrl, renderSearchResults, handleError } from './actions'
 import {
   menu,
   menuShow,
@@ -18,7 +18,7 @@ window.mainFrame = mainFrame;
 
 const showPanelHandler = () => store.dispatch(actions.showPanel());
 const thumbHandler = (e) => {
-  // e.preventDefault();
+  e.preventDefault();
   if (e.keyCode === 13) {
     e.preventDefault();
     store.dispatch(actions.targetUrl(e.target.href));
@@ -31,6 +31,7 @@ const thumbHandler = (e) => {
     // e.preventDefault();
     url = e.target.href ? e.target.href : e.target.parentNode.href;
     store.dispatch(actions.targetUrl(url));
+    store.dispatch(actions.showPanel());
   }
 };
 const isSubmit = true;
@@ -48,7 +49,7 @@ const formSubmitHandler = (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   menuShow.focus();
-  store.subscribe([toggleMenu, renderSearchResults, setIframeUrl]);
+  store.subscribe([toggleMenu, renderSearchResults, setIframeUrl, handleError]);
 
   menuShow.addEventListener('click', showPanelHandler);
   mainList.addEventListener('click', thumbHandler);

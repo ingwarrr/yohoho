@@ -1,5 +1,5 @@
 import store from './store';
-import { menu, menuShow, menuInput, mainList, mainFrame} from './elements';
+import { menu, menuShow, menuInput, mainList, mainFrame, mainError } from './elements';
 import { copyObj, createPreview, compareTypes } from './utils';
 
 export const toggleMenu = () => {
@@ -14,8 +14,8 @@ export const toggleMenu = () => {
 };
 
 export const renderSearchResults = () => {
-  const { searchResults } = store.getState();
-  const prevState = store.getPrevState();
+  const { searchResults } = copyObj(store.getState());
+  const prevState = copyObj(store.getPrevState());
   if (searchResults && Array.isArray(searchResults) && searchResults.length > 0) {
     const list = searchResults
       .sort(compareTypes)
@@ -28,9 +28,18 @@ export const renderSearchResults = () => {
 };
 
 export const setIframeUrl = () => {
-  const state = store.getState();
+  const state = copyObj(store.getState());
   const prevState = store.getPrevState();
   if (state.targetUrl !== prevState.targetUrl) {
     mainFrame.src = state.targetUrl;
+  }
+};
+
+export const handleError = () => {
+  const state = store.getState();
+  if (state.error) {
+    mainError.innerText = state.error;
+  } else {
+    mainError.innerText = '';
   }
 };

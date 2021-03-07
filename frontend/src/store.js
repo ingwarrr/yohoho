@@ -1,17 +1,26 @@
-import { API_URL } from './app.config'
-console.log(API_URL);
+import { API_URL, FETCH_COOLDOWN } from './app.config';
+import { copyObj } from './utils';
+import debounce from 'lodash.debounce';
+
 function getSearchResults(q) {
   console.log('fetch');
-  fetch(API_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(q),
-  })
-    .then(res => res.json())
-    .then(req => store.dispatch(actions.searchResults(req)))
+  try {
+    fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(q),
+    })
+      .then(res => res.json())
+      .then(req => store.dispatch(actions.searchResults(req)))
+      .catch(err => store.dispatch(actions.setError(err)))
+  } catch (error) {
+    console.log(error)
+  }  
 };
+
+const debouncedSearch = debounce((q) => getSearchResults(q), FETCH_COOLDOWN);
 
 function createStore(rootReducer, initialState) {
   let prevState = {};
@@ -53,29 +62,35 @@ const rootReducer = (state, action) => {
   switch (action.type) {
     case '__INIT__':
       return {
-        ...state,
+        ...copyObj(state),
         init: true,
       }
     case 'show_panel':
       return {
-        ...state,
+        ...copyObj(state),
         showPanel: !state.showPanel,
       }
     case 'search_query':
-      getSearchResults(action.payload)
+      debouncedSearch(action.payload)
       return {
-        ...state,
+        ...copyObj(state),
         searchQuery: action.payload,
+        error: false,
       }
     case 'search_results':
       return {
-        ...state,
+        ...copyObj(state),
         searchResults: action.payload,
       }
     case 'target_url':
       return {
-        ...state,
+        ...copyObj(state),
         targetUrl: action.payload,
+      }
+    case 'set_error':
+      return {
+        ...copyObj(state),
+        error: action.payload,
       }
     case 'clear_state':
       return state;
@@ -90,6 +105,7 @@ const initialState = {
   searchResults: [],
   searchQuery: '',
   targetUrl: '',
+  error: false,
 };
 
 const actions = {
@@ -120,7 +136,13 @@ const actions = {
     return {
       type: 'clear_state',
     }
-  }
+  },
+  setError(payload) {
+    return {
+      type: 'set_error',
+      payload
+    }
+  },
 };
 
 const store = createStore(rootReducer, initialState);
