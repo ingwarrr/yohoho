@@ -1,6 +1,7 @@
+const API_URL = 'http://0.0.0.0:5000/q';
 function getSearchResults(q) {
   console.log('fetch');
-  fetch('http://localhost:5000/q', {
+  fetch(API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -40,7 +41,6 @@ function createStore(rootReducer, initialState) {
     subscribers.forEach((sub) => sub());
   }
   return {
-    getSubscribers,
     subscribe,
     getState,
     getPrevState,

@@ -49,12 +49,20 @@ a {
         flex-wrap: wrap;
         margin-top: 2rem;
     }
+    & form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    & .form-group {
+        margin: 0 auto;
+        
+        display: block;
+    }
     &-input {
         padding: .5rem;
         border-radius: 4px;
-        margin: 0 auto;
         min-width: 400px;
-        display: block;
     }
 }
 
