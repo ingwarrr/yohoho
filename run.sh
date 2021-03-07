@@ -2,7 +2,6 @@
 sudo systemctl restart nginx
 cd /var/www/yohoho/
 git pull
-cd ./frontend
+cd /var/www/yohoho/frontend
 yarn webpack
-cd ../backend
-python ./app.py
+python3 /var/www/yohoho/backend/app.py

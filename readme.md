@@ -24,4 +24,3 @@ cat ~/.ssh/id_ed25519.pub
 #автозапуск
 cp run.sh /etc/init.d/
 sudo chmod +x /etc/init.d/run.sh
-ln -s /etc/init.d/run.sh /etc/rc.d/
