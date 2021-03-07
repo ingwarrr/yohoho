@@ -8,9 +8,9 @@ from selenium.webdriver.chrome.options import Options
 
 class KP:
     def __init__(self, query):
-        self.query = query    
+        self.query = query
         self.yoho_base = 'https://nono.games/'
-    
+
     @property
     def _url(self):
         return 'https://www.kinopoisk.ru/index.php?%s' % urllib.parse.urlencode({ 'kp_query': self.query})
@@ -23,7 +23,7 @@ class KP:
             return self._parse_element(soup)
         return self._parse_elements(elements)
 
-    def _parse_element(self, soup):        
+    def _parse_element(self, soup):
         try:
             _id = re.search(r"www\.kinopoisk\.ru%2Ffilm%2F(\d+)", str(soup)).group(1)
         except:
@@ -50,9 +50,9 @@ class KP:
             types = ['film', 'series']
             _id = name_div.select('a')[0].attrs['data-id']
             _type = name_div.select('a')[0].attrs['data-type']
-            if requests.get(self.yoho_base + '{}/{}/'.format(_type, _id)).status_code == 200 and _type in types:
-                name = name_div.select('a')[0].text            
-                
+            if requests.get(self.yoho_base + '{}/{}/'.format(_type, _id), timeout=10).status_code == 200 and _type in types:
+                name = name_div.select('a')[0].text
+
                 year = ''
                 try:
                     year = name_div.select('.year')[0].text
@@ -71,5 +71,5 @@ class KP:
 
 
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     print(KP('matrix').search())
