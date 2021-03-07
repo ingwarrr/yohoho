@@ -1,5 +1,7 @@
 #!/bin/bash
+sudo systemctl restart nginx
+git pull
 cd ./frontend
-yarn run webpack
+yarn webpack
 cd ../backend
 python ./app.py
