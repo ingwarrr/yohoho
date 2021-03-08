@@ -28,7 +28,7 @@ a {
     width: 100%;
     padding-bottom: 40px;
     position: fixed;
-    top: calc(-100% + 34px);
+    top: -100%;
     height: 100%;
     left: 0;
     background: rgba(0,0,0,.4);
@@ -38,11 +38,13 @@ a {
         & .menu-show {
             top: 1rem;
             bottom: unset;
+            
         }
     }
     &-show {
         position: absolute;
-        bottom: 0;
+        bottom: -40px;
+        right: 1rem;
     }
     &-list {
         display: flex;
