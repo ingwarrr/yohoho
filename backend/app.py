@@ -11,12 +11,12 @@ app.config.from_object(__name__)
 
 # enable CORS
 # CORS(app)
-CORS(app, support_credentials=True)
+# CORS(app, support_credentials=True)
 
 # sanity check route
-@app.route('/ping', methods=['GET'])
-def ping_pong():
-    return jsonify('pong!')
+# @app.route('/ping', methods=['GET'])
+# def ping_pong():
+#     return jsonify('pong!')
 
 @app.route('/q/', methods=['POST', 'GET'])
 def get_search():
